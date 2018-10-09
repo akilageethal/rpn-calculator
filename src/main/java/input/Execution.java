@@ -8,7 +8,14 @@ import java.util.Stack;
  * to facilitate undo operation when requested.
  */
 public class Execution {
+
+    // when a value is pushed to stack this flag will be set to true
     private boolean valuePush;
+
+    /**
+     * for each execution the used (popped/pushed) numbers will be kept as a list
+     * for future undo operation
+     */
     private Stack<BigDecimal> executionValues = new Stack<BigDecimal>();
 
     public Execution(boolean valuePush) {
