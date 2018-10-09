@@ -5,6 +5,13 @@ import java.util.Stack;
 
 public class ValueInput extends InputToken {
 
+    public ValueInput(String token) {
+        setValue(token);
+    }
+
+    public ValueInput() {
+    }
+
     /**
      * push the number inputs from user to the stack.
      * @param values     current value stack

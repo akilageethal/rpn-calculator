@@ -31,6 +31,11 @@ public enum Operator {
         return this.id;
     }
 
+    /**
+     * get the matching operator enum for the given token
+     * @param token user input token
+     * @return the matching operator enum
+     */
     public static Operator getOperator(String token) {
         return operatorMap.get(token);
     }

@@ -49,14 +49,13 @@ public class Calculator {
                 System.out.println(PrintUtil.getErrorMessage(e.getMessage(), count, token));
                 break;
             }
-            count += 2; // increment the count by 2 to accommodate the white space in between tokens
+            count += 2; // increment the count by 2 to accommodate the white space in between tokens, for error display
         }
         System.out.println(PrintUtil.getCurrentStackString(getValues()));
-        System.out.println(System.lineSeparator());
     }
 
     /**
-     * create the inputToken object, either a ValueInput or OperatorInput instance using the string token input
+     * create the InputToken object, either a ValueInput or OperatorInput instance using the string token input
      * @param token user input token
      * @return created InputToken type object
      */
@@ -65,9 +64,8 @@ public class Calculator {
         if(Operator.isValidOperator(token)) {
             inputToken = OperatorFactory.getOperator(token);
         } else {
-            inputToken = new ValueInput();
+            inputToken = new ValueInput(token);
         }
-        inputToken.setValue(token);
         return inputToken;
     }
 

@@ -24,12 +24,10 @@ public class CalculatorRunner {
                 System.out.println("Please enter a valid input");
             }
         }
-
     }
 
     public static void main(String[] args) {
         CalculatorRunner calculatorRunner = new CalculatorRunner();
         calculatorRunner.run();
     }
-
 }
