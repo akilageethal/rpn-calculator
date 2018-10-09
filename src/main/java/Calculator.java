@@ -44,7 +44,7 @@ public class Calculator {
         for (String token : inputTokens) {
             InputToken inputToken = createInputToken(token);
             try {
-                inputToken.performCalculatorAction(values, executions);
+                inputToken.performCalculatorAction(getValues(), getExecutions());
             } catch (CalculatorException e) {
                 System.out.println(PrintUtil.getErrorMessage(e.getMessage(), count, token));
                 break;
