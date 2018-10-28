@@ -3,7 +3,7 @@ import main.java.exception.CalculatorException;
 import java.math.BigDecimal;
 import java.util.Stack;
 
-public class ValueInput extends InputToken {
+public class ValueInput extends AbstractInput {
 
     public ValueInput(String token) {
         setValue(token);
@@ -19,7 +19,7 @@ public class ValueInput extends InputToken {
      * @throws CalculatorException if the given String is not a valid number throws an exception
      */
     @Override
-    public void performCalculatorAction(Stack<BigDecimal> values, Stack<Execution> executions) throws CalculatorException {
+    public void calculate(Stack<BigDecimal> values, Stack<Execution> executions) throws CalculatorException {
         try {
             values.push(new BigDecimal(getValue()));
             executions.push(new Execution(true));

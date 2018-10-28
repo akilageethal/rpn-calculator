@@ -38,7 +38,7 @@ public class ValueInputTest {
         Stack<BigDecimal> mockStack = new Stack<BigDecimal>();
         Stack<Execution> mockExecutions = new Stack<Execution>();
         valueInput.setValue("153.36523");
-        valueInput.performCalculatorAction(mockStack, mockExecutions);
+        valueInput.calculate(mockStack, mockExecutions);
         assertTrue(mockStack.pop().doubleValue() == 153.36523);
 
         Execution lastExecution = mockExecutions.pop();
@@ -56,6 +56,6 @@ public class ValueInputTest {
         exception.expect(CalculatorException.class);
         exception.expectMessage("Invalid input token");
         valueInput.setValue("abc");
-        valueInput.performCalculatorAction(mockStack, mockExecutions);
+        valueInput.calculate(mockStack, mockExecutions);
     }
 }

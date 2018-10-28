@@ -1,11 +1,9 @@
 package main.java;
 
 import main.java.exception.CalculatorException;
+import main.java.input.AbstractInput;
 import main.java.input.Execution;
-import main.java.input.InputToken;
-import main.java.input.ValueInput;
-import main.java.input.operator.Operator;
-import main.java.input.operator.OperatorFactory;
+import main.java.input.operator.InputTokenFactory;
 import main.java.utils.PrintUtil;
 import java.math.BigDecimal;
 import java.util.Stack;
@@ -35,16 +33,16 @@ public class Calculator {
      * run the calculator operation on a given string, initially tokenize the string by splitting from whitespace
      * and perform the calculator operation on each token.
      * Prints errors and the stack after each operation to the console
-     * @param input String input from the user
+     * @param userInput String input from the user
      */
-    public void execute(String input) {
-        String[] inputTokens = input.trim().split(getSeparator());
+    public void execute(String userInput) {
+        String[] inputTokens = userInput.trim().split(getSeparator());
 
         int count = 1;
         for (String token : inputTokens) {
-            InputToken inputToken = createInputToken(token);
+            AbstractInput inputToken = InputTokenFactory.getInputTokenType(token);
             try {
-                inputToken.performCalculatorAction(getValues(), getExecutions());
+                inputToken.calculate(getValues(), getExecutions());
             } catch (CalculatorException e) {
                 System.out.println(PrintUtil.getErrorMessage(e.getMessage(), count, token));
                 break;
@@ -54,20 +52,6 @@ public class Calculator {
         System.out.println(PrintUtil.getCurrentStackString(getValues()));
     }
 
-    /**
-     * create the InputToken object, either a ValueInput or OperatorInput instance using the string token input
-     * @param token user input token
-     * @return created InputToken type object
-     */
-    private InputToken createInputToken(String token) {
-        InputToken inputToken;
-        if(Operator.isValidOperator(token)) {
-            inputToken = OperatorFactory.getOperator(token);
-        } else {
-            inputToken = new ValueInput(token);
-        }
-        return inputToken;
-    }
 
     public Stack<BigDecimal> getValues() {
         return values;

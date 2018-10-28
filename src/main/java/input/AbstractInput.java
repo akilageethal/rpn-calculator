@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 import java.util.Stack;
 
 /**
- * Abstract class for the Input Token type. All user input tokens will be an InputToken type and
+ * Abstract class for the Input Token type. All user input tokens will be an AbstractInput type and
  * will be instantiated with the correct subclass
  */
-public abstract class InputToken {
+public abstract class AbstractInput {
 
     private String value;
 
@@ -21,7 +21,7 @@ public abstract class InputToken {
      * @param executions execution stack inorder to keep the records for future undo operations
      * @throws CalculatorException all exceptions will be thrown as Calculator Exceptions to the invoker
      */
-    public abstract void performCalculatorAction(Stack<BigDecimal> values, Stack<Execution> executions) throws CalculatorException;
+    public abstract void calculate(Stack<BigDecimal> values, Stack<Execution> executions) throws CalculatorException;
 
     public String getValue() {
         return value;

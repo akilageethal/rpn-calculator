@@ -32,7 +32,7 @@ public class OperatorInputTest {
         Stack<BigDecimal> mockStack = new Stack<BigDecimal>();
         mockStack.push(new BigDecimal("200"));
         mockStack.push(new BigDecimal("500"));
-        operatorInput.performCalculatorAction(mockStack, mockExecutions);
+        operatorInput.calculate(mockStack, mockExecutions);
         Execution lastExecution = mockExecutions.pop();
         assertTrue(!lastExecution.isValuePush());
         assertTrue(lastExecution.getExecutionValues().pop().doubleValue() == 500);

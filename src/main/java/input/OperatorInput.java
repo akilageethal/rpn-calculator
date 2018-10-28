@@ -8,12 +8,12 @@ import java.util.Stack;
 /**
  * Abstract class for operators, all operators must extend this and implement perform method
  */
-public abstract class OperatorInput extends InputToken {
+public abstract class OperatorInput extends AbstractInput {
 
     protected static final int PREFERRED_DECIMAL_POINTS = 15;
 
     @Override
-    public void performCalculatorAction(Stack<BigDecimal> values, Stack<Execution> executions)throws CalculatorException {
+    public void calculate(Stack<BigDecimal> values, Stack<Execution> executions)throws CalculatorException {
         perform(values, executions);
     }
 
